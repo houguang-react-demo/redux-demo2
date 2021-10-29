@@ -1,8 +1,7 @@
 import store from "./store";
-import {addItemAction, changeAction, deleteAction, getListAction} from "./store/actionCreaters";
+import {addItemAction, changeAction, deleteAction, getList} from "./store/actionCreaters";
 import TodoListUi from "./TodoListUI";
 import {Component} from "react";
-import axios from "axios";
 
 class App extends Component{
 
@@ -29,11 +28,7 @@ class App extends Component{
     }
 
     componentDidMount() {
-        axios.get("http://127.0.0.1:4523/mock/389130/list").then(res=>{
-            let action = getListAction(res.data.data.list);
-            console.log(action)
-            store.dispatch(action)
-        })
+        store.dispatch(getList())
     }
 
     render() {
